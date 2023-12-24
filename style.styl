@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Rouge+Script:wght@400&display=swap')
+
+:root
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
+
+  --santa-red: #832411
+  --santa-red-darker: #350803
+
+  font-synthesis none
+  text-rendering optimizeLegibility
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  -webkit-text-size-adjust 100%
+
+body
+  background #350803
+  margin 0
+  padding 0
+  overflow clip
+
+  main
+    position relative
+
+    .splash-screen
+      position absolute
+      z-index 2
+      width 100vw
+      height 100vh
+      background #FFF
+      text-transform uppercase
+      display flex
+      flex-direction column
+      justify-content center
+      align-items center
+      opacity 1
+      transition clip-path 1s, opacity 1s 1.5s
+
+      &:before, &:after
+        content ''
+        position absolute
+        z-index 1
+        width 100%
+        height 100%
+        clip-path inset(100% 0 0 0)
+        transition clip-path 1s
+
+      &:before
+        background #CCCCCC
+      &:after
+        background #F9DEB2
+        transition-delay .5s
+
+      &.is-open
+        opacity 0
+        &:before, &:after
+          clip-path inset(0 0 0 0) 
+
+      h1
+        font-size 1em
+        font-weight 400
+        color var(--santa-red)
+      
+      button
+        padding .75em 3em
+        border none
+        border-radius 2em
+        background linear-gradient(to bottom, #350803, #832411)
+        color #FFF
+        text-transform uppercase
+        cursor pointer
+    .content
+      position absolute
+      z-index 1
+      width 100vw
+      height 100vh
+      display flex
+      justify-content center
+      align-items center
+
+      h1
+        display flex
+        flex-direction column
+        align-items center
+        line-height 3em
+        font-size 1.5em
+        font-weight 300
+        color #FDF4A0
+        text-transform uppercase
+
+        i
+          font-size 8em
+          font-family 'Rouge Script', serif
+          font-weight 400
+          color #fff
+          text-transform capitalize
+
+    .underlay
+      position absolute
+      z-index 0
+      width 100vw
+      height 100vh
+      background-image linear-gradient(to bottom, #350803, #832411)
+
+      .layer1, .layer2, .layer3
+        position absolute
+        animation-timing-function ease-in-out
+        animation-iteration-count infinite
+        animation-direction alternate
+
+        width 100vw
+        height 100vh
+
+        .snow-flake
+          position absolute
+          top -5px
+          aspect-ratio 1
+          background #FFF
+          animation-name snowFalling
+          animation-timing-function linear
+        
+      .layer1
+        animation-name wind1
+        animation-duration 15s
+
+      .layer2
+        animation-name wind2
+        animation-duration 17s
+
+      .layer3
+        animation-name wind3
+        animation-duration 20s
+
+
+@keyframes snowFalling
+  0%
+    transform translateY(0vh)
+  80%
+    opacity 1
+    transform translateY(80vh)
+  100%
+    opacity 0
+    transform translateY(100vh)
+
+@keyframes wind1
+  0%
+    transform translateX(1vw)
+  20%
+    transform translateX(3vw)
+  40%
+    transform translateX(1vw)
+  60%
+    transform translateX(4vw)
+  80%
+    transform translateX(1vw)
+  100%
+    transform translateX(3vw)
+
+@keyframes wind2
+  0%
+    transform translateX(0vw)
+  25%
+    transform translateX(2vw)
+  50%
+    transform translateX(0vw)
+  75%
+    transform translateX(1vw)
+  100%
+    transform translateX(2vw)
+
+@keyframes wind3
+  0%
+    transform translateX(0vw)
+  12%
+    transform translateX(3vw)
+  45%
+    transform translateX(0vw)
+  78%
+    transform translateX(1vw)
+  92%
+    transform translateX(0vw)
+  100%
+    transform translateX(2vw)
